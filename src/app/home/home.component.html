@@ -1,0 +1,57 @@
+<mat-form-field class="form-field form-field-select">
+  <mat-select
+    [value]="config.voice"
+    (selectionChange)="configService.update({ voiceName: $event.value.name })"
+  >
+    <mat-option
+      *ngFor="let voice of configService.voices"
+      [value]="voice"
+    >
+      {{ voice.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="form-field">
+  <label class="label">voice speed</label>
+  <mat-radio-group
+    [value]="config.voiceRate"
+    (change)="configService.update({ voiceRate: $event.value })"
+  >
+    <mat-radio-button
+      *ngFor="let voiceRate of available.voiceRates"
+      [value]="voiceRate"
+      class="radio-option"
+    >
+      {{ formatVoiceRate(voiceRate) }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div class="form-field">
+  <label class="label">numbers up to</label>
+  <mat-radio-group
+    [value]="config.range"
+    (change)="configService.update({ range: $event.value })"
+  >
+    <mat-radio-button
+      *ngFor="let range of available.ranges"
+      [value]="range"
+      class="radio-option"
+    >
+      {{ range }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div>
+  <a
+    mat-flat-button
+    class="strong-button"
+    color="primary"
+    routerLink="{{ config.mode.toLowerCase() }}"
+  >
+    Start
+  </a>
+</div>
+

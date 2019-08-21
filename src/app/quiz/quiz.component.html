@@ -1,0 +1,62 @@
+<main *ngIf="!challengesCompleted">
+  <div>
+    <button
+      class="play-action"
+      (click)="play()"
+      color="primary"
+      disableRipple
+      mat-icon-button
+    >
+      <mat-icon class="play-action-icon" inline>play_circle_outline</mat-icon>
+    </button>
+  </div>
+
+  <mat-form-field *ngIf="!currentChallenge.revealed" class="answer-form-field">
+    <form (ngSubmit)="submit($event)" #challengeForm="ngForm">
+      <input
+        autofocus
+        class="answer-input"
+        matInput
+        type="text"
+        [(ngModel)]="answer"
+        name="answer"
+        #answerInput
+      >
+    </form>
+  </mat-form-field>
+
+  <div class="result" *ngIf="currentChallenge.revealed">
+    <p class="correct" *ngIf="currentChallenge.text == answer">
+      {{ answer }}
+    </p>
+    <p *ngIf="currentChallenge.text != answer">
+      <span class="wrong">{{ answer }}</span>
+      <span class="correct">{{ currentChallenge.text }}</span>
+    </p>
+  </div>
+</main>
+
+<main *ngIf="challengesCompleted">
+  <p class="summary">
+    {{ challengesInfo.correct }} <small>/ {{ challengesInfo.all }}</small>
+  </p>
+  <button
+    class="strong-button"
+    color="primary"
+    mat-flat-button
+    (click)="restart()"
+  >
+    Restart
+  </button>
+  <div>
+    <a routerLink="/" mat-button>home</a>
+  </div>
+</main>
+
+<div *ngIf="false">
+  <pre>mode {{ configService.config.mode }}</pre>
+  <pre>voice name {{ configService.config.voice.name }}</pre>
+  <pre>voiceRate {{ configService.config.voiceRate }}</pre>
+  <pre>currentChallengeIndex {{ currentChallengeIndex }}</pre>
+  <pre>challenges {{ challenges | json }}</pre>
+</div>
