@@ -38,7 +38,7 @@ jobs:
           command: |
             ls -larth
             ssh -p 222 $SSH_USER@$SSH_HOST "find ~/domains/numbers-coach.tomaszoledzki.pl/public_html -mindepth 1 -maxdepth 1 -not -name cgi-bin -exec rm -rv {} \;"
-            mv dist web
+            mv dist/numbers-coach web
             scp -P 222 -r web/. $SSH_USER@$SSH_HOST:~/domains/numbers-coach.tomaszoledzki.pl/public_html
 
 workflows:
