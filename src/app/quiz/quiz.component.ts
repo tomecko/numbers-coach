@@ -20,7 +20,7 @@ interface Challenge {
   styleUrls: ['./quiz.component.sass']
 })
 export class QuizComponent implements AfterViewInit {
-  static CHALLENGES_COUNT = 3;
+  static CHALLENGES_COUNT = 5;
 
   @ViewChild('answerInput', { static: false }) answerInput: ElementRef;
 
