@@ -29,7 +29,7 @@ export class QuizComponent implements AfterViewInit {
   challengesCompleted = false;
   appIsStable: boolean;
 
-  answer: number;
+  answer: string;
 
   constructor(
     private configService: ConfigService,

@@ -27,13 +27,13 @@ export class ConfigService {
     voiceRates: [0.75, 1, 1.25],
   };
 
+  public voices: SpeechSynthesisVoice[] = [];
+
   private _config = {
     range: 99,
     voiceName: undefined,
     voiceRate: 1,
   };
-
-  private voices: SpeechSynthesisVoice[] = [];
 
   constructor(
     private localStorage: LocalStorageService,

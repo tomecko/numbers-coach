@@ -9,7 +9,7 @@ import { ConfigService } from './../services/config.service';
 })
 export class HomeComponent implements OnInit {
   constructor(
-    private configService: ConfigService,
+    public configService: ConfigService,
     private ngZone: NgZone,
   ) {}
 
