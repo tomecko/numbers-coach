@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.updateVoices();
     this.watchVoices();
   }
 
@@ -25,19 +26,23 @@ export class HomeComponent implements OnInit {
     return ConfigService.available;
   }
 
+  updateVoices() {
+    this.configService.updateVoices(speechSynthesis.getVoices());
+  }
+
   watchVoices() {
     speechSynthesis.onvoiceschanged = () => {
       this.ngZone.run(() => {
-        this.configService.updateVoices(speechSynthesis.getVoices());
+        this.updateVoices();
       });
     };
   }
 
   formatVoiceRate(value: number): string {
     return {
-      0.75: 'slow',
+      0.8: 'slow',
       1: 'normal',
-      1.25: 'fast',
+      1.2: 'fast',
     }[value] || String(value);
   }
 

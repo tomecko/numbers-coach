@@ -14,10 +14,11 @@
   <mat-form-field *ngIf="!currentChallenge.revealed" class="answer-form-field">
     <form (ngSubmit)="submit($event)" #challengeForm="ngForm">
       <input
+        autocomplete="off"
         autofocus
         class="answer-input"
         matInput
-        type="text"
+        type="number"
         [(ngModel)]="answer"
         name="answer"
         #answerInput
@@ -49,6 +50,6 @@
     Restart
   </button>
   <div>
-    <a routerLink="/" mat-button>home</a>
+    <a routerLink="/" mat-button>back home</a>
   </div>
 </main>
