@@ -56,6 +56,7 @@ export class QuizComponent implements AfterViewInit {
     const text = this.challenges[this.currentChallengeIndex].text;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = this.configService.config.voice;
+    utterance.lang = this.configService.config.voice.lang;
     utterance.rate = this.configService.config.voiceRate;
     speechSynthesis.speak(utterance);
     this.focusAnswerInput();
