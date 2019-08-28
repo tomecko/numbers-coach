@@ -33,7 +33,7 @@
     <mat-label class="label">numbers up to</mat-label>
     <mat-select
       [value]="config.range"
-      (change)="configService.update({ range: $event.value })"
+      (selectionChange)="configService.update({ range: $event.value })"
     >
       <mat-option
         *ngFor="let range of available.ranges"
