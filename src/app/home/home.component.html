@@ -1,53 +1,52 @@
-<mat-form-field class="form-field form-field-select">
-  <mat-select
-    [value]="config.voice"
-    (selectionChange)="configService.update({ voiceName: $event.value.name })"
-  >
-    <mat-option
-      *ngFor="let voice of configService.voices"
-      [value]="voice"
+<div class="container">
+  <mat-form-field class="form-field">
+    <mat-label class="label">voice</mat-label>
+    <mat-select
+      [value]="config.voice"
+      (selectionChange)="configService.update({ voiceName: $event.value.name })"
     >
-      {{ voice.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+      <mat-option
+        *ngFor="let voice of configService.voices"
+        [value]="voice"
+      >
+        {{ voice.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div class="form-field">
-  <label class="label">voice speed</label>
-  <mat-radio-group
-    [value]="config.voiceRate"
-    (change)="configService.update({ voiceRate: $event.value })"
-  >
-    <mat-radio-button
-      *ngFor="let voiceRate of available.voiceRates"
-      [value]="voiceRate"
-      class="radio-option"
+  <mat-form-field class="form-field">
+    <mat-label class="label">voice speed</mat-label>
+    <mat-select
+      [value]="config.voiceRate"
+      (selectionChange)="configService.update({ voiceRate: $event.value })"
     >
-      {{ formatVoiceRate(voiceRate) }}
-    </mat-radio-button>
-  </mat-radio-group>
-</div>
+      <mat-option
+        *ngFor="let voiceRate of available.voiceRates"
+        [value]="voiceRate"
+      >
+        {{ formatVoiceRate(voiceRate) }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div class="form-field">
-  <label class="label">numbers up to</label>
-  <mat-radio-group
-    [value]="config.range"
-    (change)="configService.update({ range: $event.value })"
-  >
-    <mat-radio-button
-      *ngFor="let range of available.ranges"
-      [value]="range"
-      class="radio-option"
+  <mat-form-field class="form-field">
+    <mat-label class="label">numbers up to</mat-label>
+    <mat-select
+      [value]="config.range"
+      (change)="configService.update({ range: $event.value })"
     >
-      {{ range }}
-    </mat-radio-button>
-  </mat-radio-group>
-</div>
+      <mat-option
+        *ngFor="let range of available.ranges"
+        [value]="range"
+      >
+        {{ range }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div>
   <a
     mat-flat-button
-    class="strong-button"
+    class="strong-action"
     color="primary"
     routerLink="quiz"
   >
