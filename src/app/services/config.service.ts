@@ -24,7 +24,7 @@ export class ConfigService {
 
   static available: Available = {
     ranges: [9, 99, 999, 9999, 99999],
-    voiceRates: [0.75, 0.85, 1, 1.15, 1.25],
+    voiceRates: [0.7, 0.85, 1, 1.15, 1.3],
   };
 
   public voices: SpeechSynthesisVoice[] = [];

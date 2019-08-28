@@ -26,6 +26,9 @@
         #answerInput
       >
     </form>
+    <mat-hint align="start">
+      {{ currentChallengeIndex + 1 }} / {{ challenges.length }}
+    </mat-hint>
   </mat-form-field>
 
   <section class="result" *ngIf="currentChallenge.revealed">
@@ -44,7 +47,7 @@
     {{ challengesInfo.correct }} <small>/ {{ challengesInfo.all }}</small>
   </p>
   <button
-    class="strong-action"
+    class="strong-action restart-action"
     color="primary"
     mat-flat-button
     (click)="restart()"
