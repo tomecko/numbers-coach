@@ -40,9 +40,11 @@ export class HomeComponent implements OnInit {
 
   formatVoiceRate(value: number): string {
     return {
-      0.8: 'slow',
+      0.75: 'very slow',
+      0.85: 'slow',
       1: 'normal',
-      1.2: 'fast',
+      1.15: 'fast',
+      1.25: 'very fast',
     }[value] || String(value);
   }
 
