@@ -1,13 +1,15 @@
 <main *ngIf="!challengesCompleted">
   <div>
     <button
-      class="play-action"
-      (click)="play()"
+      class="quiz-main-action"
+      (click)="currentChallenge.revealed ? next() : play()"
       color="primary"
       disableRipple
       mat-icon-button
     >
-      <mat-icon class="play-action-icon" inline>play_circle_outline</mat-icon>
+      <mat-icon inline>
+        {{ currentChallenge.revealed ? "forward" : "play_circle_outline" }}
+      </mat-icon>
     </button>
   </div>
 

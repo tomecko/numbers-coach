@@ -82,13 +82,13 @@ export class QuizComponent implements AfterViewInit {
   submit(event) {
     event.stopPropagation();
     if (this.currentChallenge.revealed) {
-      this.move();
+      this.next();
     } else {
       this.reveal();
     }
   }
 
-  move() {
+  next() {
     this.currentChallenge.correct = String(this.answer) === this.currentChallenge.text;
     this.currentChallengeIndex = this.currentChallengeIndex + 1;
     this.answer = undefined;
@@ -106,7 +106,7 @@ export class QuizComponent implements AfterViewInit {
   @HostListener('document:keydown.enter')
   onEnter() {
     if (this.currentChallenge && this.currentChallenge.revealed) {
-      this.move();
+      this.next();
     } else if (this.challengesCompleted) {
       this.restart();
     }
