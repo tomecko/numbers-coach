@@ -1,5 +1,5 @@
 <main *ngIf="!challengesCompleted">
-  <div>
+  <section>
     <button
       class="quiz-main-action"
       (click)="currentChallenge.revealed ? next() : play()"
@@ -8,10 +8,10 @@
       mat-icon-button
     >
       <mat-icon inline>
-        {{ currentChallenge.revealed ? "forward" : "play_circle_outline" }}
+        {{ currentChallenge.revealed ? "skip_next" : "play_circle_outline" }}
       </mat-icon>
     </button>
-  </div>
+  </section>
 
   <mat-form-field *ngIf="!currentChallenge.revealed" class="answer-form-field">
     <form (ngSubmit)="submit($event)" #challengeForm="ngForm">
@@ -28,7 +28,7 @@
     </form>
   </mat-form-field>
 
-  <div class="result" *ngIf="currentChallenge.revealed">
+  <section class="result" *ngIf="currentChallenge.revealed">
     <p class="correct" *ngIf="currentChallenge.text == answer">
       {{ answer }}
     </p>
@@ -36,7 +36,7 @@
       <span class="wrong">{{ answer }}</span>
       <span class="correct">{{ currentChallenge.text }}</span>
     </p>
-  </div>
+  </section>
 </main>
 
 <main *ngIf="challengesCompleted">
