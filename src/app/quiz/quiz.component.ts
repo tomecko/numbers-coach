@@ -20,7 +20,7 @@ interface Challenge {
   styleUrls: ['./quiz.component.sass']
 })
 export class QuizComponent implements AfterViewInit {
-  static SIGNIFICANT_DIGITS = 5;
+  static SIGNIFICANT_DIGITS = 4;
 
   @ViewChild('answerInput', { static: false }) answerInput: ElementRef;
 
