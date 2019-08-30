@@ -52,7 +52,9 @@ export class QuizComponent implements AfterViewInit {
     return this.challenges[this.currentChallengeIndex];
   }
 
+  @HostListener('document:keydown.p')
   play() {
+    speechSynthesis.cancel();
     const text = this.challenges[this.currentChallengeIndex].text;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = this.configService.config.voice;
