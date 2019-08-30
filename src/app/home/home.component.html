@@ -44,6 +44,21 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="form-field">
+    <mat-label class="label">batch size</mat-label>
+    <mat-select
+      [value]="config.batch"
+      (selectionChange)="configService.update({ batch: $event.value })"
+    >
+      <mat-option
+        *ngFor="let batch of available.batches"
+        [value]="batch"
+      >
+        {{ batch }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <a
     mat-flat-button
     class="strong-action"

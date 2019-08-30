@@ -6,12 +6,14 @@ import {
 } from './local-storage.service';
 
 interface Config {
+  batch: number;
   range: number;
   voiceName: string | undefined;
   voiceRate: number;
 }
 
 interface Available {
+  batches: number[];
   ranges: number[];
   voiceRates: number[];
 }
@@ -23,6 +25,7 @@ export class ConfigService {
   static STORAGE_KEY: LocalStorageKey = 'config';
 
   static available: Available = {
+    batches: [5, 10, 15, 20],
     ranges: [9, 99, 999, 9999, 99999],
     voiceRates: [0.7, 0.85, 1, 1.15, 1.3],
   };
@@ -30,6 +33,7 @@ export class ConfigService {
   public voices: SpeechSynthesisVoice[] = [];
 
   private _config = {
+    batch: 10,
     range: 99,
     voiceName: undefined,
     voiceRate: 1,
@@ -40,7 +44,7 @@ export class ConfigService {
   ) {
     const storedConfig = localStorage.get(ConfigService.STORAGE_KEY);
     if (storedConfig) {
-      this._config = localStorage.get(ConfigService.STORAGE_KEY) as Config;
+      this._config = { ...this._config, ...localStorage.get(ConfigService.STORAGE_KEY)} as Config;
     }
   }
 
