@@ -20,7 +20,7 @@ interface Challenge {
   styleUrls: ['./quiz.component.sass']
 })
 export class QuizComponent implements AfterViewInit {
-  static CHALLENGES_COUNT = 5;
+  static SIGNIFICANT_DIGITS = 5;
 
   @ViewChild('answerInput', { static: false }) answerInput: ElementRef;
 
@@ -63,9 +63,19 @@ export class QuizComponent implements AfterViewInit {
   }
 
   setupChallenges() {
-    this.challenges = [...Array(QuizComponent.CHALLENGES_COUNT)]
-      .map(_ => ({
-        text: String(Math.floor(Math.random() * (this.configService.config.range + 1))),
+    this.challenges = [...Array(this.configService.config.batch)]
+      .map(_ => Math.floor(Math.random() * (this.configService.config.range + 1)))
+      .map(number => {
+        const length = number.toString().length;
+        const significantDigitsToSimplify = length - QuizComponent.SIGNIFICANT_DIGITS;
+        if (significantDigitsToSimplify > 0) {
+          const simplifyingFactor = Math.pow(10, significantDigitsToSimplify);
+          return Math.round(number / simplifyingFactor) * simplifyingFactor;
+        }
+        return number;
+      })
+      .map(number => ({
+        text: String(number),
       }));
     this.currentChallengeIndex = 0;
     this.challengesCompleted = false;
@@ -93,7 +103,7 @@ export class QuizComponent implements AfterViewInit {
     this.currentChallenge.correct = String(this.answer) === this.currentChallenge.text;
     this.currentChallengeIndex = this.currentChallengeIndex + 1;
     this.answer = undefined;
-    if (this.currentChallengeIndex >= QuizComponent.CHALLENGES_COUNT) {
+    if (this.currentChallengeIndex >= this.configService.config.batch) {
       this.challengesCompleted = true;
     } else {
       this.play();
