@@ -48,4 +48,9 @@ export class HomeComponent implements OnInit {
     }[value] || String(value);
   }
 
+  formatRange(value: number): string {
+    const digitCount = Math.round(Math.log10(value));
+    return `${digitCount} digit${digitCount > 1 ? 's' : ''}`;
+  }
+
 }

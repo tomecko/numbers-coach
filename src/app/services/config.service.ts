@@ -26,7 +26,7 @@ export class ConfigService {
 
   static available: Available = {
     batches: [5, 10, 15, 20],
-    ranges: [9, 99, 999, 9999, 99999],
+    ranges: [9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999, 9999999999],
     voiceRates: [0.7, 0.85, 1, 1.15, 1.3],
   };
 

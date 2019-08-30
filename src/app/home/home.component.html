@@ -39,7 +39,7 @@
         *ngFor="let range of available.ranges"
         [value]="range"
       >
-        {{ range }}
+        {{ formatRange(range) }}
       </mat-option>
     </mat-select>
   </mat-form-field>
