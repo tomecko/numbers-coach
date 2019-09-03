@@ -30,6 +30,6 @@
 <main *ngIf="challengesCompleted">
   <p class="text">All done!</p>
   <app-end-nav
-    (restart)="restart()"
+    (restart)="setupChallenges()"
   ></app-end-nav>
 </main>
