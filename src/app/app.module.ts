@@ -7,13 +7,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialComponentsModule } from './material-components/material-components.module';
 import { AppRoutingModule } from './routing/app-routing.module';
-import { QuizComponent } from './quiz/quiz.component';
+
+import { EndNavComponent } from './quiz/end-nav/end-nav.component';
+import { InputQuizComponent } from './quiz/input-quiz/input-quiz.component';
+import { MainActionComponent } from './quiz/main-action/main-action.component';
+import { SelfCheckQuizComponent } from './quiz/self-check-quiz/self-check-quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    QuizComponent
+
+    EndNavComponent,
+    InputQuizComponent,
+    MainActionComponent,
+    SelfCheckQuizComponent,
   ],
   imports: [
     // external

@@ -1,17 +1,10 @@
 <main *ngIf="!challengesCompleted">
-  <section>
-    <button
-      class="quiz-main-action"
-      (click)="currentChallenge.revealed ? next() : play()"
-      color="primary"
-      disableRipple
-      mat-icon-button
-    >
-      <mat-icon inline>
-        {{ currentChallenge.revealed ? "navigate_next" : "play_circle_outline" }}
-      </mat-icon>
-    </button>
-  </section>
+
+  <app-main-action
+    (clicked)="currentChallenge.revealed ? next() : play()"
+    [challenge]="currentChallenge"
+    [icon]="currentChallenge.revealed ? 'navigate_next' : 'play_circle_outline'"
+  ></app-main-action>
 
   <mat-form-field *ngIf="!currentChallenge.revealed" class="answer-form-field">
     <form (ngSubmit)="submit($event)" #challengeForm="ngForm">
@@ -49,15 +42,7 @@
   <p class="summary">
     {{ challengesInfo.correct }} <small>/ {{ challengesInfo.all }}</small>
   </p>
-  <button
-    class="strong-action restart-action"
-    color="primary"
-    mat-flat-button
-    (click)="restart()"
-  >
-    Restart
-  </button>
-  <div>
-    <a routerLink="/" mat-button>back home</a>
-  </div>
+  <app-end-nav
+    (restart)="restart()"
+  ></app-end-nav>
 </main>

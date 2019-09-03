@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
-import { ConfigService } from './../services/config.service';
+import { ConfigService, QuizMode } from './../services/config.service';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +24,13 @@ export class HomeComponent implements OnInit {
 
   get available() {
     return ConfigService.available;
+  }
+
+  get quizLink() {
+    return {
+      [QuizMode.Input]: 'input-quiz',
+      [QuizMode.SelfCheck]: 'self-check-quiz',
+    }[this.config.mode] || 'self-check-quiz';
   }
 
   updateVoices() {

@@ -59,11 +59,26 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="form-field">
+    <mat-label class="label">mode</mat-label>
+    <mat-select
+      [value]="config.mode"
+      (selectionChange)="configService.update({ mode: $event.value })"
+    >
+      <mat-option
+        *ngFor="let mode of available.modes"
+        [value]="mode"
+      >
+        {{ mode }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <a
     mat-flat-button
     class="strong-action"
     color="primary"
-    routerLink="quiz"
+    [routerLink]="quizLink"
   >
     Start
   </a>

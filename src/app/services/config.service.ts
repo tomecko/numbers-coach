@@ -7,6 +7,7 @@ import {
 
 interface Config {
   batch: number;
+  mode: QuizMode;
   range: number;
   voiceName: string | undefined;
   voiceRate: number;
@@ -14,9 +15,12 @@ interface Config {
 
 interface Available {
   batches: number[];
+  modes: QuizMode[];
   ranges: number[];
   voiceRates: number[];
 }
+
+export enum QuizMode { Input = 'Input Quiz', SelfCheck = 'Self-check Quiz' }
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +30,7 @@ export class ConfigService {
 
   static available: Available = {
     batches: [5, 10, 15, 20],
+    modes: [QuizMode.Input, QuizMode.SelfCheck],
     ranges: [9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999, 9999999999],
     voiceRates: [0.7, 0.85, 1, 1.15, 1.3],
   };
@@ -34,6 +39,7 @@ export class ConfigService {
 
   private _config = {
     batch: 10,
+    mode: QuizMode.Input,
     range: 99,
     voiceName: undefined,
     voiceRate: 1,
