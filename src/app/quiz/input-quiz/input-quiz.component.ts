@@ -36,6 +36,7 @@ export class InputQuizComponent extends BaseQuizComponent {
     }
   }
 
+  @HostListener('document:keydown.n')
   next() {
     this.currentChallenge.correct = String(this.answer) === this.currentChallenge.text;
     this.answer = undefined;
