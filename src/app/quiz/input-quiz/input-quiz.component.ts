@@ -47,6 +47,7 @@ export class InputQuizComponent extends BaseQuizComponent {
   }
 
   @HostListener('document:keydown.enter')
+  @HostListener('document:click')
   onEnter() {
     if (this.currentChallenge && this.currentChallenge.revealed) {
       this.next();
