@@ -1,27 +1,27 @@
 <main *ngIf="!challengesCompleted">
 
-  <div class="actions">
+  <section class="actions">
     <app-main-action
       (clicked)="play()"
       [challenge]="currentChallenge"
       icon="play_circle_outline"
+      class="main-action"
+      text="p - play sound"
     ></app-main-action>
 
     <app-main-action
       (clicked)="next()"
       [challenge]="currentChallenge"
       icon="navigate_next"
+      class="main-action"
+      text="n - next number"
     ></app-main-action>
-  </div>
+  </section>
 
   <section class="text">
     <p>{{ currentChallenge.text }}</p>
     <p class="additional-info">
       {{ currentChallengeIndex + 1 }} / {{ challenges.length }}
-    </p>
-    <p class="additional-info">
-      p - play sound<br/>
-      n - next number<br/>
     </p>
   </section>
 

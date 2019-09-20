@@ -1,13 +1,14 @@
-<section>
-  <button
-    class="quiz-main-action"
-    (click)="clicked.emit()"
-    color="primary"
-    disableRipple
-    mat-icon-button
-  >
-    <mat-icon inline>
-      {{ icon }}
-    </mat-icon>
-  </button>
-</section>
+<button
+  class="quiz-main-action"
+  (click)="clicked.emit()"
+  color="primary"
+  disableRipple
+  mat-icon-button
+>
+  <mat-icon inline>
+    {{ icon }}
+  </mat-icon>
+  <span class="text">
+    {{ text }}
+  </span>
+</button>

@@ -11,6 +11,7 @@ export class MainActionComponent {
 
   @Input() challenge: Challenge;
   @Input() icon: string;
+  @Input() text: string;
   @Output() clicked = new EventEmitter<boolean>();
 
 }

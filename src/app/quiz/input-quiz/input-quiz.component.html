@@ -1,10 +1,13 @@
 <main *ngIf="!challengesCompleted">
 
-  <app-main-action
-    (clicked)="currentChallenge.revealed ? next() : play()"
-    [challenge]="currentChallenge"
-    [icon]="currentChallenge.revealed ? 'navigate_next' : 'play_circle_outline'"
-  ></app-main-action>
+  <section class="actions">
+    <app-main-action
+      (clicked)="currentChallenge.revealed ? next() : play()"
+      [challenge]="currentChallenge"
+      [icon]="currentChallenge.revealed ? 'navigate_next' : 'play_circle_outline'"
+      text="p - play again"
+    ></app-main-action>
+  </section>
 
   <mat-form-field *ngIf="!currentChallenge.revealed" class="answer-form-field">
     <form (ngSubmit)="submit($event)" #challengeForm="ngForm">
@@ -21,9 +24,6 @@
     </form>
     <mat-hint align="start">
       {{ currentChallengeIndex + 1 }} / {{ challenges.length }}
-    </mat-hint>
-    <mat-hint align="end">
-      p - play again
     </mat-hint>
   </mat-form-field>
 
