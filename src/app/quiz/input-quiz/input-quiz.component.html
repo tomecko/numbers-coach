@@ -5,7 +5,7 @@
       (clicked)="currentChallenge.revealed ? next() : play()"
       [challenge]="currentChallenge"
       [icon]="currentChallenge.revealed ? 'navigate_next' : 'play_circle_outline'"
-      text="p - play again"
+      [text]="currentChallenge.revealed ? 'n - next number' : 'p - play again'"
     ></app-main-action>
   </section>
 
