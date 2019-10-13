@@ -1,4 +1,4 @@
-# Number Coach
+# Numbers Coach
 
 https://numbers-coach.tomaszoledzki.pl
 
