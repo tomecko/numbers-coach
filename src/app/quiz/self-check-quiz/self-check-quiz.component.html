@@ -2,7 +2,7 @@
 
   <section class="actions">
     <app-main-action
-      (clicked)="play()"
+      (click)="play($event)"
       [challenge]="currentChallenge"
       icon="play_circle_outline"
       class="main-action"
@@ -10,7 +10,7 @@
     ></app-main-action>
 
     <app-main-action
-      (clicked)="next()"
+      (click)="next()"
       [challenge]="currentChallenge"
       icon="navigate_next"
       class="main-action"

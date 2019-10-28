@@ -2,10 +2,18 @@
 
   <section class="actions">
     <app-main-action
-      (clicked)="currentChallenge.revealed ? next() : play()"
+      (click)="play($event)"
       [challenge]="currentChallenge"
-      [icon]="currentChallenge.revealed ? 'navigate_next' : 'play_circle_outline'"
-      [text]="currentChallenge.revealed ? 'n - next number' : 'p - play again'"
+      icon="play_circle_outline"
+      class="main-action"
+      text="p - play sound"
+    ></app-main-action>
+    <app-main-action
+      *ngIf="currentChallenge.revealed"
+      (click)="next()"
+      [challenge]="currentChallenge"
+      icon="navigate_next"
+      text="n - next number"
     ></app-main-action>
   </section>
 

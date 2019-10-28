@@ -52,8 +52,11 @@ export class BaseQuizComponent {
     this.onChallengeInit();
   }
 
-  @HostListener('document:keydown.p')
-  play() {
+  @HostListener('document:keydown.p', ['$event'])
+  play(event?: MouseEvent | undefined) {
+    if (event) {
+      event.stopPropagation();
+    }
     speechSynthesis.cancel();
     const text = this.challenges[this.currentChallengeIndex].text;
     const utterance = new SpeechSynthesisUtterance(text);
