@@ -10,7 +10,7 @@
     ></app-main-action>
     <app-main-action
       *ngIf="currentChallenge.revealed"
-      (click)="next()"
+      (click)="next($event)"
       [challenge]="currentChallenge"
       icon="navigate_next"
       text="n - next number"

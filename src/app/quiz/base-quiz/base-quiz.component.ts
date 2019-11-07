@@ -53,7 +53,7 @@ export class BaseQuizComponent {
   }
 
   @HostListener('document:keydown.p', ['$event'])
-  play(event?: MouseEvent | undefined) {
+  play(event?: UIEvent | undefined) {
     if (event) {
       event.stopPropagation();
     }
@@ -66,7 +66,10 @@ export class BaseQuizComponent {
     speechSynthesis.speak(utterance);
   }
 
-  next() {
+  next(event?: UIEvent | undefined) {
+    if (event) {
+      event.stopPropagation();
+    }
     this.currentChallengeIndex = this.currentChallengeIndex + 1;
     if (this.currentChallengeIndex >= this.configService.config.batch) {
       this.challengesCompleted = true;

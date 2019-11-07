@@ -36,11 +36,11 @@ export class InputQuizComponent extends BaseQuizComponent {
     }
   }
 
-  @HostListener('document:keydown.n')
-  next() {
+  @HostListener('document:keydown.n', ['$event'])
+  next(event?: UIEvent | undefined) {
     this.currentChallenge.correct = String(this.answer) === this.currentChallenge.text;
     this.answer = undefined;
-    super.next();
+    super.next(event);
   }
 
   reveal() {
