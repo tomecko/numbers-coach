@@ -1,4 +1,22 @@
 <div class="container">
+
+  <div class="start-container">
+    <p>
+      This is a tool for practising<br/>
+      listening comprehension of numbers<br/>
+      in&nbsp;a&nbsp;language of your choice.
+    </p>
+
+    <a
+      mat-flat-button
+      class="strong-action"
+      color="primary"
+      [routerLink]="quizLink"
+    >
+      quiz me!
+    </a>
+  </div>
+
   <mat-form-field class="form-field">
     <mat-label class="label">voice</mat-label>
     <mat-select
@@ -48,21 +66,6 @@
   </mat-form-field>
 
   <mat-form-field class="form-field">
-    <mat-label class="label">batch size</mat-label>
-    <mat-select
-      [value]="config.batch"
-      (selectionChange)="configService.update({ batch: $event.value })"
-    >
-      <mat-option
-        *ngFor="let batch of available.batches"
-        [value]="batch"
-      >
-        {{ batch }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="form-field">
     <mat-label class="label">mode</mat-label>
     <mat-select
       [value]="config.mode"
@@ -77,13 +80,20 @@
     </mat-select>
   </mat-form-field>
 
-  <a
-    mat-flat-button
-    class="strong-action"
-    color="primary"
-    [routerLink]="quizLink"
-  >
-    Start
-  </a>
+  <mat-form-field class="form-field">
+    <mat-label class="label">batch size</mat-label>
+    <mat-select
+      [value]="config.batch"
+      (selectionChange)="configService.update({ batch: $event.value })"
+    >
+      <mat-option
+        *ngFor="let batch of available.batches"
+        [value]="batch"
+      >
+        {{ batch }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </div>
 
